@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 60% 97%;
+    --foreground: 213 70% 35%;
+    --card: 0 0% 100%;
+    --card-foreground: 213 70% 35%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 70% 35%;
+    --primary: 213 70% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 60% 94%;
+    --secondary-foreground: 213 70% 35%;
+    --muted: 210 60% 94%;
+    --muted-foreground: 213 40% 50%;
+    --accent: 28 80% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 50% 88%;
+    --input: 210 50% 88%;
+    --ring: 28 80% 52%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-sky-50 text-navy antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F6FC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5DDF5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1E5AA8;
+}
+
+/* Live pulse animation */
+@keyframes live-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.7;
+  }
+}
+
+.live-dot {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+/* Audio visualizer bars */
+@keyframes sound-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.sound-bar {
+  animation: sound-bar 0.6s ease-in-out infinite;
+}
+
+.sound-bar:nth-child(2) { animation-delay: 0.1s; }
+.sound-bar:nth-child(3) { animation-delay: 0.2s; }
+.sound-bar:nth-child(4) { animation-delay: 0.15s; }
+
+/* Range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #C5DDF5;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+  height: 14px;
+  width: 14px;
+  background: #E67E22;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(230, 126, 34, 0.25);
+  color: #1E5AA8;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .sound-bar, .live-dot {
+    animation: none !important;
+  }
+}
